@@ -1,8 +1,27 @@
+use hex_color::HexColor;
 mod ass_parser;
+use crate::ass_parser::{AssFile, V4Format, AssFileOptions};
 mod video_proc;
 
 fn test_fn(){
-    let ass_file = ass_parser::AssFile::from_file("src/subtitles.ass".to_string());
+    let mut ass_file = ass_parser::AssFile::from_file("src/subtitles.ass".to_string());
+    let color  = AssFileOptions::_get_ass_color(HexColor::YELLOW);
+    ass_file.components.script 
+        .set_scripttype("v4.00+".to_string())
+        .set_playresx("384".to_string())
+        .set_playresy("288".to_string())
+        .set_scaledborderandshadow("yes".to_string())
+        .set_ycbcr_matrix("None".to_string());
+
+    ass_file.components.v4.set_v4(V4Format::default())
+        .set_primarycolour(color)
+        .set_bold("-1".to_string())
+        .set_italic("-1".to_string())
+        .set_fontsize("16".to_string());
+
+    AssFile::save_file(&ass_file, "src/new_subtitles1.ass");
+
+
     std::process::exit(0);
 }
 
