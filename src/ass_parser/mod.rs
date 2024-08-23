@@ -741,7 +741,7 @@ impl AssFileOptions {
 }
 
 impl AssFileOptions{
-    pub fn _get_ass_color(color: HexColor) -> String {
+    pub fn get_ass_color(color: HexColor) -> String {
         let red = color.r;
         let green = color.g;
         let blue = color.b;
@@ -768,7 +768,7 @@ impl AssFileOptions{
 
         let mut file_data = String::new();
         let mut file_buffer = fs::File::open(ass_file)?;
-        let ass_color = Self::_get_ass_color(color);
+        let ass_color = Self::get_ass_color(color);
         file_buffer.read_to_string(&mut file_data)?;
 
         let lines:Vec<&str> = file_data.split("\r\n").collect();
