@@ -3,6 +3,15 @@
 version = 3
 
 [[package]]
+name = "ass_parser"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b238bb28334c154a870a2ffce3bfcba5c332df4a0a524523740802b7e0cdbd3f"
+dependencies = [
+ "hex_color",
+]
+
+[[package]]
 name = "byteorder"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -44,6 +53,7 @@ checksum = "97b3888a4aecf77e811145cadf6eef5901f4782c53886191b2f693f24761847c"
 name = "parashu"
 version = "0.1.0"
 dependencies = [
+ "ass_parser",
  "hex_color",
 ]
 
