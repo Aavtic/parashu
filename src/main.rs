@@ -1,11 +1,10 @@
 use hex_color::HexColor;
-mod ass_parser;
-use crate::ass_parser::{AssFile, V4Format, AssFileOptions};
+use ass_parser::{self, AssFile, V4Format, AssFileOptions};
 mod video_proc;
 
 fn test_fn(){
     let mut ass_file = ass_parser::AssFile::from_file("src/subtitles.ass".to_string());
-    let color  = AssFileOptions::_get_ass_color(HexColor::YELLOW);
+    let color  = AssFileOptions::get_ass_color(HexColor::YELLOW);
     ass_file.components.script 
         .set_scripttype("v4.00+".to_string())
         .set_playresx("384".to_string())
